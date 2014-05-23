@@ -22,7 +22,7 @@ $ns namtrace-all $fnam
 
 set ftcp [open fcloud-ex1.tcp w]
 
-# Dumbbell topology 
+# Dumbbell topology
 #
 # s0              r0
 #   \            /
