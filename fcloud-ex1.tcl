@@ -62,10 +62,10 @@ Agent/TCP set window_ 200000
 Agent/TCP set ssthresh_ 200000
 set tcp0 [new Agent/TCP/Newreno]
 $tcp0 set class_ 1
-$ns attach-agent $s1 $tcp0
+$ns attach-agent $s0 $tcp0
 
 set sink0 [new Agent/TCPSink]
-$ns attach-agent $r1 $sink0
+$ns attach-agent $r0 $sink0
 
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
