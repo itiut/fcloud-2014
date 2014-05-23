@@ -14,13 +14,13 @@ $ns color 10 chocolate
 set nums 1
 
 #Trace setup
-set fall [open ex1-sample.tr w]
+set fall [open fcloud-ex1.tr w]
 $ns trace-all $fall
 
-set fnam [open ex1-sample.nam w]
+set fnam [open fcloud-ex1.nam w]
 $ns namtrace-all $fnam
 
-set ftcp [open ex1-sample.tcp w]
+set ftcp [open fcloud-ex1.tcp w]
 
 # Dumbbell topology 
 #
