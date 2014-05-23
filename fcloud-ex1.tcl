@@ -64,17 +64,32 @@ set tcp0 [new Agent/TCP/Newreno]
 $tcp0 set class_ 1
 $ns attach-agent $s0 $tcp0
 
+set tcp1 [new Agent/TCP/Newreno]
+$tcp1 set class_ 2
+$ns attach-agent $s1 $tcp1
+
 set sink0 [new Agent/TCPSink]
 $ns attach-agent $r0 $sink0
+
+set sink1 [new Agent/TCPSink]
+$ns attach-agent $r1 $sink1
 
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0
 
+set ftp1 [new Application/FTP]
+$ftp1 attach-agent $tcp1
+
 $ns connect $tcp0 $sink0
+$ns connect $tcp1 $sink1
 
 $tcp0 trace cwnd_
 $tcp0 trace ssthresh_
 $tcp0 attach-trace $ftcp
+
+$tcp1 trace cwnd_
+$tcp1 trace ssthresh_
+$tcp1 attach-trace $ftcp
 
 # CBR sender: Transport and Application
 set udp0 [new Agent/UDP]
@@ -105,10 +120,12 @@ proc finish {} {
 }
 
 $ns at 1.0 "$ftp0 start; $ns trace-annotate \"Time:[$ns now] Start FTP\""
+$ns at 1.0 "$ftp1 start; $ns trace-annotate \"Time:[$ns now] Start FTP\""
 #$ns at 51.0 "$cbr0 start;
 #$ns trace-annotate \"Time:[$ns now] Start CBR interval [$cbr0 set interval_] size [$cbr0 set packetSize_]\""
 #$ns at 101.0 "$cbr0 stop; $ns trace-annotate \"Time:[$ns now] Stop CBR\""
 $ns at 200.0 "$ftp0 stop; $ns trace-annotate \"Time:[$ns now] Stop FTP\""
+$ns at 200.0 "$ftp1 stop; $ns trace-annotate \"Time:[$ns now] Stop FTP\""
 $ns at 200.0 "finish"
 #
 # start simulatuion
