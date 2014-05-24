@@ -12,7 +12,9 @@ set terminal png;
 set output 'cwnd_same_start.png';
 set xrange [0:100];
 set yrange [0:80];
-plot 'cwnd_tcp0_same_start.dat' u 1:7 w l, 'cwnd_tcp1_same_start.dat' u 1:7 w l;"
+plot
+  'cwnd_tcp0_same_start.dat' u 1:7 w l title 'tcp0',
+  'cwnd_tcp1_same_start.dat' u 1:7 w l title 'tcp1';"
 
 
 awk '$1 == "r" && $3 == "2" && $4 == "3" && $8 == "1"' \
@@ -59,8 +61,8 @@ set terminal png;
 set output "bandwidth_same_start.png";
 set multiplot;
 plot
-  "bandwidth_same_start.dat" u 1:($2+$3) title "tcp2" with filledcurves x1,
-  "bandwidth_same_start.dat" u 1:($2) title "tcp1" with filledcurves x1;'
+  "bandwidth_same_start.dat" u 1:($2+$3) title "tcp1" with filledcurves x1,
+  "bandwidth_same_start.dat" u 1:($2) title "tcp0" with filledcurves x1;'
 
 # different start
 ns different_start.tcl
@@ -73,7 +75,9 @@ set terminal png;
 set output 'cwnd_different_start.png';
 set xrange [0:100];
 set yrange [0:80];
-plot 'cwnd_tcp0_different_start.dat' u 1:7 w l, 'cwnd_tcp1_different_start.dat' u 1:7 w l;"
+plot
+  'cwnd_tcp0_different_start.dat' u 1:7 w l title 'tcp0',
+  'cwnd_tcp1_different_start.dat' u 1:7 w l title 'tcp1';"
 
 
 awk '$1 == "r" && $3 == "2" && $4 == "3" && $8 == "1"' \
@@ -120,8 +124,8 @@ set terminal png;
 set output "bandwidth_different_start.png";
 set multiplot;
 plot
-  "bandwidth_different_start.dat" u 1:($2+$3) title "tcp2" with filledcurves x1,
-  "bandwidth_different_start.dat" u 1:($2) title "tcp1" with filledcurves x1;'
+  "bandwidth_different_start.dat" u 1:($2+$3) title "tcp1" with filledcurves x1,
+  "bandwidth_different_start.dat" u 1:($2) title "tcp0" with filledcurves x1;'
 
 # different delay
 ns different_delay.tcl
@@ -132,7 +136,9 @@ grep "1  0  5  0  cwnd" different_delay.tcp > cwnd_tcp1_different_delay.dat
 gnuplot -e "
 set terminal png;
 set output 'cwnd_different_delay.png';
-plot 'cwnd_tcp0_different_delay.dat' u 1:7 w l, 'cwnd_tcp1_different_delay.dat' u 1:7 w l;"
+plot
+  'cwnd_tcp0_different_delay.dat' u 1:7 w l title 'tcp0',
+  'cwnd_tcp1_different_delay.dat' u 1:7 w l title 'tcp1';"
 
 
 awk '$1 == "r" && $3 == "2" && $4 == "3" && $8 == "1"' \
@@ -179,5 +185,5 @@ set terminal png;
 set output "bandwidth_different_delay.png";
 set multiplot;
 plot
-  "bandwidth_different_delay.dat" u 1:($2+$3) title "tcp2" with filledcurves x1,
-  "bandwidth_different_delay.dat" u 1:($2) title "tcp1" with filledcurves x1;'
+  "bandwidth_different_delay.dat" u 1:($2+$3) title "tcp1" with filledcurves x1,
+  "bandwidth_different_delay.dat" u 1:($2) title "tcp0" with filledcurves x1;'
