@@ -10,8 +10,6 @@ grep "1  0  5  0  cwnd" same_start.tcp > cwnd_tcp1_same_start.dat
 gnuplot -e "
 set terminal png;
 set output 'cwnd_same_start.png';
-set xrange [0:100];
-set yrange [0:80];
 plot
   'cwnd_tcp0_same_start.dat' u 1:7 w l title 'tcp0',
   'cwnd_tcp1_same_start.dat' u 1:7 w l title 'tcp1';"
@@ -73,8 +71,6 @@ grep "1  0  5  0  cwnd" different_start.tcp > cwnd_tcp1_different_start.dat
 gnuplot -e "
 set terminal png;
 set output 'cwnd_different_start.png';
-set xrange [0:100];
-set yrange [0:80];
 plot
   'cwnd_tcp0_different_start.dat' u 1:7 w l title 'tcp0',
   'cwnd_tcp1_different_start.dat' u 1:7 w l title 'tcp1';"
