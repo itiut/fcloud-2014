@@ -120,7 +120,7 @@ proc finish {} {
 }
 
 $ns at 1.0 "$ftp0 start; $ns trace-annotate \"Time:[$ns now] Start FTP\""
-$ns at 30.0 "$ftp1 start; $ns trace-annotate \"Time:[$ns now] Start FTP\""
+$ns at 50.0 "$ftp1 start; $ns trace-annotate \"Time:[$ns now] Start FTP\""
 #$ns at 51.0 "$cbr0 start;
 #$ns trace-annotate \"Time:[$ns now] Start CBR interval [$cbr0 set interval_] size [$cbr0 set packetSize_]\""
 #$ns at 101.0 "$cbr0 stop; $ns trace-annotate \"Time:[$ns now] Stop CBR\""
