@@ -4,8 +4,8 @@ set -eux
 # same_start
 ns same_start.tcl
 
-grep "0  0  4  0  cwnd" same_start.tcp > "cwnd_tcp0_same_start.dat"
-grep "1  0  5  0  cwnd" same_start.tcp > "cwnd_tcp1_same_start.dat"
+grep "0  0  4  0  cwnd" same_start.tcp > cwnd_tcp0_same_start.dat
+grep "1  0  5  0  cwnd" same_start.tcp > cwnd_tcp1_same_start.dat
 
 gnuplot -e "
 set terminal png;
